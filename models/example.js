@@ -1,7 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+  var Dream = sequelize.define("Dream", {
+    name: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    status: DataTypes.BOOLEAN,
+    duration: DataTypes.INTEGER
+
   });
-  return Example;
+  return Dream;
 };
