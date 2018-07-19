@@ -56,6 +56,7 @@ var refreshExamples = function() {
 
     $exampleList.empty();
     $exampleList.append($examples);
+    location.reload();
   });
 };
 

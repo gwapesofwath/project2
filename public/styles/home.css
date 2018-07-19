@@ -1,0 +1,9 @@
+.background {
+    background: url(../pics/darkBedroom.jpg) no-repeat center center fixed; 
+    height: 100vh;
+    width: 100vw;
+}
+
+.firstThing {
+    color: grey;
+}

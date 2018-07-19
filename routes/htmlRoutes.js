@@ -4,8 +4,15 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
+      res.render("home", {
+        examples: result
+      });
+    });
+  });
+
+  app.get("/nappers", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
       res.render("index", {
-        msg: "Welcome!",
         examples: result
       });
     });
