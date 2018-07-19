@@ -19,7 +19,7 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  app.get("/nappers/:id", function(req, res) {
     db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
       res.render("example", {
         example: result

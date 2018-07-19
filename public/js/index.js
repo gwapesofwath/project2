@@ -1,30 +1,30 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $exampleText = $("#napper-text");
+var $exampleDescription = $("#dream-description");
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $exampleList = $("#napper-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  postDream: function(example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/nappers",
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  getDreams: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/nappers",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteDream: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/nappers/" + id,
       type: "DELETE"
     });
   }
@@ -32,16 +32,16 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+  API.getDreams().then(function(data) {
+    var $examples = data.map(function(napper) {
       var $a = $("<a>")
-        .text(example.name)
-        .attr("href", "/example/" + example.id);
+        .text(napper.name)
+        .attr("href", "/napper/" + napper.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": napper.id
         })
         .append($a);
 
@@ -75,7 +75,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.postDream(example).then(function() {
     refreshExamples();
   });
 
@@ -90,7 +90,7 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteDream(idToDelete).then(function() {
     refreshExamples();
   });
 };
