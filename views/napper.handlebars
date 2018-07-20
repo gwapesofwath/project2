@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">View all The Different nappers!</h5>
+          {{!-- <p>
+            <strong>ID</strong>: {{this.loggedNaps.id}}</p>
+          <p>
+          <p>
+            <strong>Name</strong>: {{this.loggedNaps.name}}</p>
+          <p>
+            <strong>Description:</strong> {{this.loggedNaps.description}}</p>
+            <a href="/">← Back To Home</a> --}}
+
+            <ul>
+                {{#each users}}
+                
+                    {{> burgers/layoutForNapper-block devoured=true}}
+                
+                {{/each}}
+            </ul>
+        
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
