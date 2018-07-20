@@ -13,25 +13,33 @@ module.exports = function(app) {
   app.get("/maps", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("map", {
-        examples: result
+        loggedNaps: result
       });
     });
   });
 
   app.get("/nappers", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
-      res.render("index", {
-        examples: result
+      res.render("addANap", {
+        loggedNaps: result
+      });
+    });
+  });
+
+  app.get("/users", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      res.render("napper", {
+        loggedNaps: result
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/nappers/:id", function(req, res) {
+  app.get("/entry/:id", function(req, res) {
     db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
       console.log(result.dataValues);
-      res.render("example", {
-        example: result.dataValues
+      res.render("loggedNap", {
+        loggedNaps: result.dataValues
       });
     });
   });
