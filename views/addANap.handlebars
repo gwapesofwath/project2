@@ -3,15 +3,19 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>View Fellow Nappers!</h2>
+        <h2>Check Out Other People's Experiences</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="napper-text">Napper</label>
-            <input type="text" id="napper-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <input type="text" id="napper-text" class="form-control" aria-describedby="example-text" placeholder="UserName">
+          </div>
+          <div class="form-group">
+            <label for="napper-text">Title</label>
+            <input type="text" id="title-text" class="form-control" aria-describedby="example-text" placeholder="Title your dream">
           </div>
           <div class="form-group">
             <label for="example-description">Dream Description</label>
-            <textarea class="form-control" id="dream-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <textarea class="form-control" id="dream-description" aria-describedby="example-description" placeholder="Describe your dream"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -19,7 +23,7 @@
         <ul id="napper-list" class="list-group">
           {{#each loggedNaps}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="entry/{{this.id}}">{{this.name}} {{this.description}}</a>
+            <a href="entry/{{this.id}}">{{this.name}} {{this.dreamTitle}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

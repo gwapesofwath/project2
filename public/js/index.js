@@ -1,5 +1,6 @@
 // Get references to page elements
 var napperText = $("#napper-text");
+var dreamTitle = $("#title-text");
 var dreamDescription = $("#dream-description");
 var $submitBtn = $("#submit");
 var napperList = $("#napper-list");
@@ -68,6 +69,7 @@ var handleFormSubmit = function(event) {
 
   var example = {
     name: napperText.val().trim(),
+    dreamTitle: dreamTitle.val().trim(),
     description: dreamDescription.val().trim()
   };
 
