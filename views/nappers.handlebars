@@ -13,10 +13,10 @@
             <strong>Description:</strong> {{this.loggedNaps.description}}</p>
             <a href="/">← Back To Home</a> --}}
 
-            <ul>
+            <ul class="nappersList">
                 {{#each users}}
                 
-                    {{> layoutForNapper-block devoured=true}}
+                    {{> layoutForNapper-block}}
                 
                 {{/each}}
             </ul>

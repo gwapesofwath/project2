@@ -18,7 +18,39 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/nappers", function(req, res) {
+  app.get("/alarm", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      res.render("alarm", {
+        alarm: result
+      });
+    });
+  });
+
+  app.get("/sleepy", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      res.render("sleepy", {
+        sleepy: result
+      });
+    });
+  });
+
+  app.get("/user/:id", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      res.render("userpage", {
+        sleepy: result
+      });
+    });
+  });
+
+  app.get("/facts", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      res.render("facts", {
+        facts: result
+      });
+    });
+  });
+
+  app.get("/addnaps", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("addANap", {
         loggedNaps: result
@@ -28,8 +60,8 @@ module.exports = function(app) {
 
   app.get("/users", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
-      res.render("napper", {
-        loggedNaps: result
+      res.render("nappers", {
+        users: result
       });
     });
   });
@@ -39,7 +71,7 @@ module.exports = function(app) {
     db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
       console.log(result.dataValues);
       res.render("loggedNap", {
-        loggedNaps: result.dataValues
+        specificNap: result.dataValues
       });
     });
   });

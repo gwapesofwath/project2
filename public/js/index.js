@@ -1,8 +1,8 @@
 // Get references to page elements
-var $exampleText = $("#napper-text");
-var $exampleDescription = $("#dream-description");
+var napperText = $("#napper-text");
+var dreamDescription = $("#dream-description");
 var $submitBtn = $("#submit");
-var $exampleList = $("#napper-list");
+var napperList = $("#napper-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -12,13 +12,13 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/nappers",
+      url: "api/addnappers",
       data: JSON.stringify(example)
     });
   },
   getDreams: function() {
     return $.ajax({
-      url: "api/nappers",
+      url: "api/addANap",
       type: "GET"
     });
   },
@@ -33,10 +33,11 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getDreams().then(function(data) {
+    //HAVE ERIC EXPLAIN DATA.MAP
     var $examples = data.map(function(napper) {
       var $a = $("<a>")
         .text(napper.name)
-        .attr("href", "/napper/" + napper.id);
+        .attr("href", "/entry/" + napper.id);
 
       var $li = $("<li>")
         .attr({
@@ -54,8 +55,8 @@ var refreshExamples = function() {
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    napperList.empty();
+    napperList.append($examples);
     location.reload();
   });
 };
@@ -66,8 +67,8 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    name: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    name: napperText.val().trim(),
+    description: dreamDescription.val().trim()
   };
 
   if (!(example.name && example.description)) {
@@ -79,8 +80,8 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  napperText.val("");
+  dreamDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -97,4 +98,4 @@ var handleDeleteBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+napperList.on("click", ".delete", handleDeleteBtnClick);

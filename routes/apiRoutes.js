@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/nappers", function(req, res) {
+  app.post("/api/addnappers", function(req, res) {
     db.Dream.create(req.body).then(function(result) {
       console.log(result);
       res.json(result);
