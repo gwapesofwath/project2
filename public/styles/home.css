@@ -1,9 +1,68 @@
 .background {
-    background: url(../pics/darkBedroom.jpg) no-repeat center center fixed; 
-    height: 100vh;
+    background: url(../pics/spacenap.jpeg) no-repeat center fixed; 
     width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
 }
 
 .firstThing {
     color: grey;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    margin-top: 10%;
+    margin-left: 45px;
+    font-size: 70px;
+    color: white;
+    font-style: bold;
+    font-weight: 800;
+}
+
+.secondThing {
+    color: grey;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    margin-top: 1%;
+    margin-left: 45px;
+    font-size: 70px;
+    color: white;
+    font-style: bold;
+    font-weight: 600;
+}
+
+.thirdThing {
+    color: grey;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    margin-top: 1%;
+    margin-left: 45px;
+    font-size: 70px;
+    color: white;
+    font-style: bold;
+    font-weight: 600;
+}
+
+.fourthThing {
+    color: grey;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    margin-top: 1%;
+    margin-left: 45px;
+    font-size: 70px;
+    color: white;
+    font-style: bold;
+    font-weight: 600;
 }
