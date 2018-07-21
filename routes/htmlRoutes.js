@@ -35,9 +35,10 @@ module.exports = function(app) {
   });
 
   app.get("/user/:id", function(req, res) {
-    db.Dream.findAll({}).then(function(result) {
-      res.render("userpage", {
-        sleepy: result
+    db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
+      console.log(result.dataValues);
+      res.render("userPage", {
+        user: result.dataValues
       });
     });
   });

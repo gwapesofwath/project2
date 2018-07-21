@@ -23,7 +23,8 @@
         <ul id="napper-list" class="list-group">
           {{#each loggedNaps}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="entry/{{this.id}}">{{this.name}} {{this.dreamTitle}}</a>
+            <a href="user/{{this.id}}">{{this.name}}</a>
+            <a href="entry/{{this.id}}"> {{this.dreamTitle}} </a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
