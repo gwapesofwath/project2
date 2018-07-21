@@ -10,6 +10,7 @@ module.exports = function(app) {
     });
   });
 
+  //maps page
   app.get("/maps", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("map", {
@@ -18,6 +19,7 @@ module.exports = function(app) {
     });
   });
 
+  //alarm page
   app.get("/alarm", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("alarm", {
@@ -26,6 +28,7 @@ module.exports = function(app) {
     });
   });
 
+  //page for getting sleepy
   app.get("/sleepy", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("sleepy", {
@@ -34,15 +37,20 @@ module.exports = function(app) {
     });
   });
 
+  // a specific user page
   app.get("/user/:id", function(req, res) {
-    db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
-      console.log(result.dataValues);
+    db.User.findAll({ where: { id: req.params.id }, include: [db.Dream] }).then(function(result) {
+      // console.log("------------------------------------------------------")
+      // for (let i = 0; i < 2; i++) {
+      // }
       res.render("userPage", {
-        user: result.dataValues
+        user: result[0],
+        naps: result[0].Dreams
       });
     });
   });
 
+  //sleep facts page
   app.get("/facts", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.render("facts", {
@@ -51,8 +59,19 @@ module.exports = function(app) {
     });
   });
 
+  //page for adding users and seeing a list of them and the two most recents naps they took
   app.get("/addnaps", function(req, res) {
-    db.Dream.findAll({}).then(function(result) {
+    db.User.findAll({}).then(function(result) {
+    // console.log(result)          
+      res.render("addANap", {
+      
+      });
+    });
+  });
+
+  app.get("/addnaps/:id", function(req, res) {
+    db.User.findAll({ where: { id: req.params.id }}).then(function(result) {
+    // console.log(result)          
       res.render("addANap", {
         loggedNaps: result
       });
@@ -60,18 +79,19 @@ module.exports = function(app) {
   });
 
   app.get("/users", function(req, res) {
-    db.Dream.findAll({}).then(function(result) {
+    db.User.findAll({}).then(function(result) {
       res.render("nappers", {
         users: result
       });
     });
   });
 
-  // Load example page and pass in an example by id
+  // Load a specific entry
   app.get("/entry/:id", function(req, res) {
-    db.Dream.findOne({ where: { id: req.params.id } }).then(function(result) {
-      console.log(result.dataValues);
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Dream]  }).then(function(result) {
+      // console.log(result);
       res.render("loggedNap", {
+        user: result.dataValues,
         specificNap: result.dataValues
       });
     });

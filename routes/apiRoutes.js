@@ -1,16 +1,32 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/nappers", function(req, res) {
+  // Get all naps
+  app.get("/api/naps", function(req, res) {
     db.Dream.findAll({}).then(function(result) {
       res.json(result);
     });
   });
 
-  // Create a new example
-  app.post("/api/addnappers", function(req, res) {
+  //get all Users
+  app.get("/api/user", function(req, res) {
+    db.User.findAll({}).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // Create a new nap
+  app.post("/api/naps", function(req, res) {
+    console.log(req);
     db.Dream.create(req.body).then(function(result) {
+      console.log(result);
+      res.json(result);
+    });
+  });
+
+  //create new User
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(result) {
       console.log(result);
       res.json(result);
     });
