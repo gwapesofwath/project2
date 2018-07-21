@@ -1,9 +1,14 @@
 // Get references to page elements
 var napperText = $("#napper-text");
-var dreamTitle = $("#title-text");
+var $dreamTitle = $("#title-text");
 var dreamDescription = $("#dream-description");
 var $submitBtn = $("#submit");
+var submitDream = $("#submitDream")
 var napperList = $("#napper-list");
+var specificUser = $(".specificUser");
+var specificID = specificUser.parent().attr("data-userpageid")
+// console.log(specificID)
+// console.log(specificUser.text());
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -13,13 +18,24 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/addnappers",
+      url: "/api/naps",
       data: JSON.stringify(example)
     });
   },
-  getDreams: function() {
+  postUser: function(example) {
+    console.log("test")
     return $.ajax({
-      url: "api/addANap",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "/api/user",
+      data: JSON.stringify(example)
+    });
+  },
+  getDreams: function(id) {
+    return $.ajax({
+      url: "/addANap/:id",
       type: "GET"
     });
   },
@@ -34,31 +50,31 @@ var API = {
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getDreams().then(function(data) {
-    //HAVE ERIC EXPLAIN DATA.MAP
-    var $examples = data.map(function(napper) {
-      var $a = $("<a>")
-        .text(napper.name)
-        .attr("href", "/entry/" + napper.id);
+    // //HAVE ERIC EXPLAIN DATA.MAP
+    // var $examples = data.map(function(napper) {
+    //   var $a = $("<a>")
+    //     .text(napper.name)
+    //     .attr("href", "/entry/" + napper.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": napper.id
-        })
-        .append($a);
+    //   var $li = $("<li>")
+    //     .attr({
+    //       class: "list-group-item",
+    //       "data-id": napper.id
+    //     })
+    //     .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+    //   var $button = $("<button>")
+    //     .addClass("btn btn-danger float-right delete")
+    //     .text("ｘ");
 
-      $li.append($button);
+    //   $li.append($button);
 
-      return $li;
-    });
+    //   return $li;
+    // });
 
-    napperList.empty();
-    napperList.append($examples);
-    location.reload();
+    // napperList.empty();
+    // napperList.append($examples); 
+    // location.reload();
   });
 };
 
@@ -67,23 +83,49 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    name: napperText.val().trim(),
-    dreamTitle: dreamTitle.val().trim(),
-    description: dreamDescription.val().trim()
+  var user = {
+    name: napperText.val().trim()
   };
 
-  if (!(example.name && example.description)) {
+  if (!(user.name)) {
     alert("You must enter an example text and description!");
     return;
   }
-
-  API.postDream(example).then(function() {
-    refreshExamples();
+  
+  API.postUser(user).then(function(data,err) {
+    console.log(data);
+    console.log(err);
+    window.location.replace("/addnaps/"+data.id)
   });
-
   napperText.val("");
   dreamDescription.val("");
+};
+
+
+//submitting a nap experience
+var handleDreamSubmit = function(event) {
+  event.preventDefault();
+
+  var nap = {
+    // name: specificUser.text(),
+    dreamTitle: $dreamTitle.val().trim(),
+    description: dreamDescription.val().trim(),
+    UserId: specificID
+  };
+
+  if (!(nap.description)) {
+    alert("You must enter a description!");
+    return;
+  }
+
+
+  API.postDream(nap).then(function() {
+    console.log("test 1")
+  });
+
+  $dreamTitle.val("");
+  dreamDescription.val("");
+  window.location.reload();
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -100,4 +142,5 @@ var handleDeleteBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
+submitDream.on("click", handleDreamSubmit);
 napperList.on("click", ".delete", handleDeleteBtnClick);
