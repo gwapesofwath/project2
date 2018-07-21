@@ -83,6 +83,13 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
+  // var nap = {
+  //   // name: specificUser.text(),
+  //   dreamTitle: $dreamTitle.val().trim(),
+  //   description: dreamDescription.val().trim(),
+  //   UserId: specificID
+  // };
+  
   var user = {
     name: napperText.val().trim()
   };
@@ -97,6 +104,11 @@ var handleFormSubmit = function(event) {
     console.log(err);
     window.location.replace("/addnaps/"+data.id)
   });
+
+  // API.postDream(nap).then(function(data,err) {
+
+  // }); 
+
   napperText.val("");
   dreamDescription.val("");
 };

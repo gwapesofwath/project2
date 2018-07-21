@@ -89,10 +89,10 @@ module.exports = function(app) {
   // Load a specific entry
   app.get("/entry/:id", function(req, res) {
     db.User.findOne({ where: { id: req.params.id }, include: [db.Dream]  }).then(function(result) {
-      // console.log(result);
+      console.log(result.dataValues.Dreams[0].dreamTitle);
       res.render("loggedNap", {
         user: result.dataValues,
-        specificNap: result.dataValues
+        specificNap: result.dataValues.Dreams[0]
       });
     });
   });
