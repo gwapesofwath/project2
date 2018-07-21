@@ -9,3 +9,16 @@ html {
 body {
   height: 100%;
 }
+
+.container {
+  font-family: 'Amatic SC', cursive;
+}
+
+.card-title {
+  font-size: 80px;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+}
