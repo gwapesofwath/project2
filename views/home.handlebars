@@ -1,20 +1,21 @@
 <style>
 
-html, body {
-    height:100%;
-}
+
 
 canvas {
     position: absolute;
     top: 0px;
     margin-top: 0px;
     z-index: 0;
+    display: inline;
+    z-index: -1;
 }
 
 .background {
     position: relative;
+    {{!-- display: inline; --}}
     z-index: 1;
-
+    margin-top: 50px;
 }
 
 .navbar {
@@ -58,9 +59,10 @@ h1{
 
 </style>
 
+
 <canvas id="myCanvas">
 </canvas>
-<div class="background">
+
 
 
     <nav class="navbar navbar-inverse">
@@ -104,8 +106,9 @@ h1{
     </nav>
 
 
+    <div class="background">
 
-
+<div class="placesToGo">
 
     <div class="firstThing">Do Sheep Dream?</div>
     <div class="secondThing"><a href="/addnaps">Add a Nap</a></div>
@@ -114,5 +117,6 @@ h1{
 
 </div>
 
+ </div>
  
     <script src="/js/diagonal.js"></script>

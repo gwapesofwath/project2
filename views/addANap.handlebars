@@ -131,7 +131,7 @@ h1{
         <ul id="napper-list" class="list-group">
           {{#each loggedNaps}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="/user/{{this.id}}" id="nappersList">{{this.name}}</a>
+            <a href="/user/{{this.id}}" id="nappersList">{{this.name}}</a>            
             <a href="/entry/{{this.id}}" class="blackText">{{this.dataValues.Dreams}}</a>
             {{!-- <a href="/entry/{{this.id}}" class="blackText">{{this.Dreams[1].dreamTitle}}</a>             --}}
             <button class="btn btn-danger float-right delete">ｘ</button>

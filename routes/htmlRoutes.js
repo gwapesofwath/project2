@@ -40,9 +40,6 @@ module.exports = function(app) {
   // a specific user page
   app.get("/user/:id", function(req, res) {
     db.User.findAll({ where: { id: req.params.id }, include: [db.Dream] }).then(function(result) {
-      // console.log("------------------------------------------------------")
-      // for (let i = 0; i < 2; i++) {
-      // }
       res.render("userPage", {
         user: result[0],
         naps: result[0].Dreams
@@ -62,12 +59,13 @@ module.exports = function(app) {
   //page for adding users and seeing a list of them and the two most recents naps they took
   app.get("/addnaps", function(req, res) {
     db.User.findAll({include: [db.Dream]}).then(function(result) {
-    console.log(result[0].dataValues.Dreams)          
+    console.log(result[0].dataValues.Dreams[0])          
       res.render("addANap", {
         loggedNaps: result
       });
     });
   });
+  
 
   app.get("/addnaps/:id", function(req, res) {
     db.User.findAll({ where: { id: req.params.id }}).then(function(result) {
