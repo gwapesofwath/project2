@@ -38,6 +38,9 @@ h1{
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 }
 
+.blackText {
+    color: black;
+}
 
 </style>
 
@@ -82,5 +85,47 @@ h1{
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1 class="facts blackText"></h1>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <a class="blackText" href="/facts">Get a new fact</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var factArr =[
+            ' A shorter nap (around 20-30 minutes) is recommended for improved short-term alertness. A shorter nap leave you feeling refreshed and focused without making you feel groggy or interfering with your nighttime sleep.',
+
+            'A study at NASA on military pilots found that short naps improved performance by up to 34%.',
+
+            'If you’re feeling extra stressed, a nap can act as a sort of mini-vacation allowing you to relax and escape for a short period of time.',
+
+            'Even if you can’t fall asleep, even just laying down for a short time can be beneficial as it lowers blood pressure, thus relieving a small amount of stress.',
+
+            'One study found that napping at least 3 times a week for at least 30 minutes resulted in a 37% lower death rate due to heart problems.',
+
+            'Napping doesn’t always keep you awake – studies have found that they can actually increase your ability to stay asleep all night by 12% and lower the time required to fall asleep by 14%.',
+            
+            'In ancient rome, everyone took a pre-scheduled nap after lunch time.',
+
+            ' A nap as short as 2-5 minutes long has been shown to be an effective means of getting rid of sleepiness.',
+
+            'There is actually a napping competition called the National Siesta Championship held in Madrid every year where the winner can take home a cash prize.',
+
+        ]
+
+        var fact = factArr[Math.floor(Math.random()*factArr.length)];
+
+        $('.facts').append(fact)
+
+        console.log(fact)
+    </script>
 
     </body>

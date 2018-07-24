@@ -4,7 +4,7 @@ var $dreamTitle = $("#title-text");
 var dreamDescription = $("#dream-description");
 var $submitBtn = $("#submit");
 var submitDream = $("#submitDream")
-var napperList = $("#napper-list");
+var deleteButton = $(".delete");
 var specificUser = $(".specificUser");
 var specificID = specificUser.parent().attr("data-userpageid")
 // console.log(specificID)
@@ -41,7 +41,7 @@ var API = {
   },
   deleteDream: function(id) {
     return $.ajax({
-      url: "api/nappers/" + id,
+      url: "/api/nappers/" + id,
       type: "DELETE"
     });
   }
@@ -74,7 +74,7 @@ var refreshExamples = function() {
 
     // napperList.empty();
     // napperList.append($examples); 
-    // location.reload();
+    location.reload();
   });
 };
 
@@ -132,12 +132,12 @@ var handleDreamSubmit = function(event) {
 
 
   API.postDream(nap).then(function() {
-    console.log("test 1")
+    window.location.reload();
   });
 
   $dreamTitle.val("");
   dreamDescription.val("");
-  window.location.reload();
+
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -148,11 +148,11 @@ var handleDeleteBtnClick = function() {
     .attr("data-id");
 
   API.deleteDream(idToDelete).then(function() {
-    refreshExamples();
+    window.location.reload();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 submitDream.on("click", handleDreamSubmit);
-napperList.on("click", ".delete", handleDeleteBtnClick);
+deleteButton.on("click", handleDeleteBtnClick);

@@ -1,5 +1,22 @@
 <style>
 
+html, body {
+    height:100%;
+}
+
+canvas {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 0;
+}
+
+.background {
+    position: relative;
+    z-index: 1;
+
+}
+
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
@@ -18,7 +35,7 @@
     min-height: 65px;
     max-height: 300px;
     padding: 0 15px 5px;
-   font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', cursive;
 }
 
 .navbar-brand img {
@@ -41,7 +58,10 @@ h1{
 
 </style>
 
-<body>
+<canvas id="myCanvas">
+</canvas>
+<div class="background">
+
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -86,14 +106,13 @@ h1{
 
 
 
-<div class="background">
+
     <div class="firstThing">Do Sheep Dream?</div>
-    {{!-- <div class="secondThing"><a href="/addnaps">Add a Nap</a></div>
+    <div class="secondThing"><a href="/addnaps">Add a Nap</a></div>
     <div class="thirdThing"><a href="/users">View Nappers</a></div>
-    <div class="fourthThing"><a href="/nappers">Count Sheep</a></div> --}}
+    <div class="fourthThing"><a href="/nappers">Count Sheep</a></div>
+
 </div>
 
-
-<canvas id="myCanvas"></canvas>
-
-{{!-- <script type="text/javascript" src="../public/js/cavnas.js"></script> --}}
+ 
+    <script src="/js/diagonal.js"></script>

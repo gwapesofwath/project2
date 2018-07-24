@@ -34,7 +34,8 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/nappers/:id", function(req, res) {
-    db.Dream.destroy({ where: { id: req.params.id } }).then(function(result) {
+    console.log("test")
+    db.User.destroy({ where: { id: req.params.id } }).then(function(result) {
       res.json(result);
     });
   });

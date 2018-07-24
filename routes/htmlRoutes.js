@@ -61,10 +61,10 @@ module.exports = function(app) {
 
   //page for adding users and seeing a list of them and the two most recents naps they took
   app.get("/addnaps", function(req, res) {
-    db.User.findAll({}).then(function(result) {
-    // console.log(result)          
+    db.User.findAll({include: [db.Dream]}).then(function(result) {
+    console.log(result[0].dataValues.Dreams)          
       res.render("addANap", {
-      
+        loggedNaps: result
       });
     });
   });
