@@ -54,13 +54,13 @@ function Z(xCoord, yCoord, dx, dy, direction) {
         context.beginPath();
     
         context.moveTo(this.x, this.y + canvasHeight); // x+0
-        context.lineTo(this.x+10, this.y + canvasHeight); // x+10
-        context.lineTo(this.x+2, this.y + canvasHeight-9); // x+2
-        context.lineTo(this.x+5, this.y + canvasHeight-9); // x+5
-        context.lineTo(this.x+10, this.y + canvasHeight-9); // x+10
-        context.lineTo(this.x+10, this.y + canvasHeight-10); // x+10
+        context.lineTo(this.x-10, this.y + canvasHeight); // x+10
+        context.lineTo(this.x-2, this.y + canvasHeight-9); // x+2
+        context.lineTo(this.x-5, this.y + canvasHeight-9); // x+5
+        context.lineTo(this.x-10, this.y + canvasHeight-9); // x+10
+        context.lineTo(this.x-10, this.y + canvasHeight-10); // x+10
         context.lineTo(this.x, this.y + canvasHeight-10); // x+0
-        context.lineTo(this.x+8, this.y + canvasHeight-1); // x+8
+        context.lineTo(this.x-8, this.y + canvasHeight-1); // x+8
         context.lineTo(this.x, this.y + canvasHeight-1); // x+0
         context.lineTo(this.x, this.y + canvasHeight);  // x+0
     

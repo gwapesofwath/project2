@@ -59,13 +59,11 @@ module.exports = function(app) {
   //page for adding users and seeing a list of them and the two most recents naps they took
   app.get("/addnaps", function(req, res) {
     db.User.findAll({include: [db.Dream]}).then(function(result) {
-    console.log(result[0].dataValues.Dreams[0])
+    console.log(result)          
       res.render("addANap", {
-        loggedNaps: result
       });
     });
   });
-
 
   app.get("/addnaps/:id", function(req, res) {
     db.User.findAll({ where: { id: req.params.id }}).then(function(result) {
@@ -80,6 +78,15 @@ module.exports = function(app) {
     db.User.findAll({}).then(function(result) {
       res.render("nappers", {
         users: result
+      });
+    });
+  });
+
+  app.get("/dreams", function(req, res) {
+    db.Dream.findAll({}).then(function(result) {
+      console.log(result)
+      res.render("dreams", {
+        dreams: result
       });
     });
   });
