@@ -6,6 +6,7 @@
     position: relative;
     top: 0px;
     left: 1px;
+    background-size: cover;
 }
 
 .firstThing {
@@ -14,9 +15,9 @@
     background-position: center;
     text-align: center;
     font-family: 'Amatic SC', cursive;
-    margin-top: 10%;
+    /* margin-top: 10%; */
     margin-left: 45px;
-    font-size: 150px;
+    font-size: 250px;
     color: white;
     font-style: bold;
     font-weight: 999;
@@ -65,5 +66,33 @@
 }
 
 a {
-    color: white;
+    color: black;
+}
+
+p {
+    color: black;
+}
+
+.btn {
+    top: 50%;
+    margin-top: 10%;
+    margin-left: -3%;
+    /* transform: translateY(-50%); */
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.0em;
+    color: black
+    /* align-content: center; */
+    /* position: relative; */
+    /* text-align: center; */
+}
+
+.random-content {
+   justify-content: center;
+   margin-left: 50%
+}
+
+.navbar-toggle {
+    cursor: pointer;
+    background-color: black
 }

@@ -3,14 +3,23 @@
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
-    background-color: rgb(80, 163, 202);
+    background-color: rgb(246, 253, 255);
     color: #FFF;
-    padding: 2% 0;
+    padding: 4% 0;
     font-family: 'Amatic SC', cursive;
-    font-size: 3.2em;
+    font-size: 2.2em;
     border: 0;
-    position: absolute;
-    max-width: 200px;
+    {{!-- position: fixed; --}}
+    {{!-- max-width: 200px; --}}
+    {{!-- overflow: auto; --}}
+}
+
+.navbar-text {
+    font-size: 150px;
+     display: block;
+     position: absolute; 
+    left: 50%;
+    transform: translatex(-50%); 
 }
 
 .navbar-brand {
@@ -18,7 +27,8 @@
     min-height: 65px;
     max-height: 300px;
     padding: 0 15px 5px;
-   font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', cursive;
+    font-size: .7em;
 }
 
 .navbar-brand img {
@@ -27,14 +37,14 @@
 }
 
 .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
-    color: #fff;
+    color: black;
 }
 
 .navbar-inverse .navbar-nav li a {
     color: #D5D5;
 }
 
-h1{
+h1 {
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 }
 
@@ -48,6 +58,7 @@ h1{
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
+            <p class="navbar-text">Shut Eye</p> 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -58,7 +69,7 @@ h1{
                     <img src="pics/darkCloud.png">Do Sheep Dream</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-fixed-left">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="active">
                         <a href="/">Home</a>
                     </li>
@@ -69,7 +80,7 @@ h1{
                         <a href="/users">Users</a>
                     </li>
                     <li class="active">
-                        <a href="/maps">Map</a>
+                        <a href="/maps">Nap Map</a>
                     </li>
                     <li class="active">
                         <a href="/alarm">Go to sleep</a>

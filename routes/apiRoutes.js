@@ -34,7 +34,7 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/nappers/:id", function(req, res) {
-    console.log("test")
+    console.log("test");
     db.User.destroy({ where: { id: req.params.id } }).then(function(result) {
       res.json(result);
     });
