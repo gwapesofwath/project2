@@ -92,10 +92,31 @@ module.exports = function(app) {
   });
 
   // Load a specific entry
+  // app.get("/entry/:id", function(req, res) {
+  //   console.log(req.params)
+  //   db.User.findOne({ where: { id: req.params.id }, include: [db.Dream]  }).then(function(result) {
+  //     // console.log(result.dataValues.Dreams[0].dreamTitle);
+  //     res.render("loggedNap", {
+  //       user: result.dataValues,
+  //       specificNap: result.dataValues.Dreams[0]
+  //     });
+  //   });
+  // });
+
   app.get("/entry/:id", function(req, res) {
+    console.log(req.params)
+    db.Dream.findOne({ where: { id: req.params.id }}).then(function(result) {
+      console.log("test", result.dataValues);
+      res.render("loggedNap", {
+        specificNap: result.dataValues
+      });
+    });
+  });
+
+  app.get("/entry/edit/:id", function(req, res) {
     db.User.findOne({ where: { id: req.params.id }, include: [db.Dream]  }).then(function(result) {
       console.log(result.dataValues.Dreams[0].dreamTitle);
-      res.render("loggedNap", {
+      res.render("editDream", {
         user: result.dataValues,
         specificNap: result.dataValues.Dreams[0]
       });
