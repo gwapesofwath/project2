@@ -2,9 +2,9 @@
   height: 100%;
 }
 
-html,
-body {
+
+.mapContainer {
   height: 100%;
   margin: 0;
-  padding: 30px;
-}
+  padding: 50px;
+} 

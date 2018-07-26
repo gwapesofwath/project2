@@ -1,9 +1,18 @@
 <style>
 
+canvas {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 0;
+    display: inline;
+    z-index: -1;
+}
+
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
-    background-color: rgb(246, 253, 255);
+    background-color: 	#67816C;
     color: #FFF;
     padding: 4% 0;
     font-family: 'Amatic SC', cursive;
@@ -12,6 +21,7 @@
     {{!-- position: fixed; --}}
     {{!-- max-width: 200px; --}}
     {{!-- overflow: auto; --}}
+    margin-bottom: 30px;
 }
 
 .navbar-text {
@@ -58,6 +68,9 @@ h1 {
 
 
 </style>
+
+<canvas id="myCanvas">
+</canvas>
 
 <body>
 
@@ -144,5 +157,7 @@ h1 {
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/diagonal.js"></script>
+
 
 </body>
