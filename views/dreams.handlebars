@@ -1,41 +1,16 @@
 <style>
-canvas {
-    position: absolute;
-    top: 0px;
-    margin-top: 0px;
-    z-index: 0;
-    display: inline;
-    z-index: -1;
-}
-
-.background {
-    position: relative;
-    {{!-- display: inline; --}}
-    z-index: 1;
-    margin-top: 50px;
-}
-
 
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
-    background-color: 	#67816C;
+    background-color: rgb(80, 163, 202);
     color: #FFF;
-    padding: 4% 0;
+    padding: 2% 0;
     font-family: 'Amatic SC', cursive;
-    font-size: 2.2em;
+    font-size: 3.2em;
     border: 0;
-    {{!-- position: fixed; --}}
-    {{!-- max-width: 200px; --}}
-    {{!-- overflow: auto; --}}
-}
-
-.navbar-text {
-    font-size: 150px;
-     display: block;
-     position: absolute; 
-    left: 50%;
-    transform: translatex(-50%); 
+    position: absolute;
+    max-width: 200px;
 }
 
 .navbar-brand {
@@ -43,8 +18,7 @@ canvas {
     min-height: 65px;
     max-height: 300px;
     padding: 0 15px 5px;
-    font-family: 'Amatic SC', cursive;
-    font-size: .7em;
+   font-family: 'Amatic SC', cursive;
 }
 
 .navbar-brand img {
@@ -53,14 +27,14 @@ canvas {
 }
 
 .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
-    color: black;
+    color: #fff;
 }
 
 .navbar-inverse .navbar-nav li a {
     color: #D5D5;
 }
 
-h1 {
+h1{
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 }
 
@@ -75,7 +49,6 @@ h1 {
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <p class="navbar-text">Shut Eye</p> 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -97,7 +70,7 @@ h1 {
                         <a href="/users">Users</a>
                     </li>
                     <li class="active">
-                        <a href="/maps">Nap Map</a>
+                        <a href="/maps">Map</a>
                     </li>
                     <li class="active">
                         <a href="/alarm">Go to sleep</a>
@@ -114,17 +87,23 @@ h1 {
         </div>
     </nav>
 
+
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h1 class="card-title">View Nappers</h1>
+          <h1 class="card-title">View Dreams</h1>
 
             <ul class="nappersList">
-                {{#each users}}
-                
-                    {{> layoutForNapper-block}}
+                {{#each dreams}}
+
+                <li>
+                    <p>
+                        <a class="blackText" href="/entry/{{this.dataValues.id}}">{{this.dataValues.dreamTitle}}</a>
+                    </p>
+
+                </li>
                 
                 {{/each}}
             </ul>
@@ -136,7 +115,5 @@ h1 {
     </div>
   </div>
 </div>
-<script src="/js/diagonal.js"></script>
-<canvas id="myCanvas"></canvas>
 
 </body>

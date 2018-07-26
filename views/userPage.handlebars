@@ -67,6 +67,11 @@ h1 {
     color: black;
 }
 
+.backToUsers {
+    position: absolute;
+    top: 10px;
+}
+
 </style>
 
 
@@ -116,8 +121,11 @@ h1 {
 <div class="container">
 
     <div class="row">
-        <div class="col-8 offset-2" data-userpageid="{{this.user.id}}">
-            <div class="specificUser" >{{this.user.name}}</div>
+        <div class="col-2 offset-2" data-userpageid="{{this.user.id}}">
+            <h1 class="specificUser" >{{this.user.name}}</h1>
+        </div>
+        <div class="col-2">
+           <a class="backToUsers" href="/users">Back to all users</a>
         </div>
     </div>  
 
@@ -137,6 +145,10 @@ h1 {
                     <label for="example-description">Dream Description</label>
                     <textarea class="form-control" id="dream-description" aria-describedby="example-description" placeholder="Describe your dream"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="example-description">Duration</label>
+                    <input type="text" id="dream-duration" class="form-control" aria-describedby="example-text" placeholder="in minutes">
+                </div>
                 <button id="submitDream" class="btn btn-primary float-right">Submit</button>
             </form>
         </div>
@@ -144,17 +156,16 @@ h1 {
   
     
     {{#each naps}}
-        {{log this.dataValues.UserId}}
+        {{!-- {{log this.dataValues.UserId}} --}}
         <div class="row">
             <div class="col-8 offset-2">
-                <a id="loggedNaps"href="/entry/{{this.dataValues.UserId}}">
-                    <div>Dream Title: <div>{{this.dataValues.dreamTitle}}</div></div>
-                    <div>Dream Description: <div>{{this.dataValues.description}}</div></div>
-                    <br>
+                <a id="loggedNaps" href="/entry/{{this.dataValues.id}}">
+                    <div><strong>Dream Title: </strong> {{this.dataValues.dreamTitle}}</div>
                 </a>
+                <a class="edit" href="/entry/edit/{{this.dataValues.UserId}}">Click Here to edit this experience</a>
             </div>
         </div>  
-
+    <br>
     {{/each}}
 </div>
 
