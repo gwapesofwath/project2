@@ -55,4 +55,19 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/boolean/:id", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    // console.log(req.body.description)
+    db.User.update({
+      status: req.body.status
+    }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbTodo) {
+      res.json(dbTodo);
+    });
+  });
+
 };

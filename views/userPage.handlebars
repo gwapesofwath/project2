@@ -83,6 +83,11 @@ h1 {
     top: 10px;
 }
 
+.sleepy{
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
 </style>
 
 
@@ -135,7 +140,7 @@ h1 {
 <div class="container">
 
     <div class="row">
-        <div class="col-2 offset-2" data-userpageid="{{this.user.id}}">
+        <div class="col-2 offset-2 getId" data-userpageid="{{this.user.id}}">
             <h1 class="specificUser" >{{this.user.name}}</h1>
         </div>
         <div class="col-2">
@@ -145,6 +150,7 @@ h1 {
         word sleep/awake in a different colored button/box upon completing the put request --}}
         <div class="col-2">
            <button class="changeSleepStatus">Sleep/Awake</button>
+           <div class="sleepy" data-boolean="{{this.user.status}}"> </div>
         </div>
     </div>  
 
@@ -188,7 +194,7 @@ h1 {
     {{/each}}
 </div>
 
-<script src="/js/diagonal.js"></script>
+
 <canvas id="myCanvas"></canvas>
 
 </body>
@@ -198,5 +204,6 @@ h1 {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="/js/index.js"></script>
+<script src="/js/boolean.js"></script>
 <script src="/js/diagonal.js"></script>
 
