@@ -1,3 +1,107 @@
+<style>
+    canvas {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 0;
+    display: inline;
+    z-index: -1;
+}
+
+html, body {
+    width: 100%;
+    padding: 0px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: rgb(246, 253, 255);
+    color: #FFF;
+    padding: 4% 0;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.2em;
+    border: 0;
+    {{!-- position: fixed; --}}
+    {{!-- max-width: 200px; --}}
+    {{!-- overflow: auto; --}}
+}
+
+.navbar-text {
+    font-size: 150px;
+     display: block;
+     position: absolute; 
+    left: 50%;
+    transform: translatex(-50%); 
+}
+
+.navbar-brand {
+    float: left;
+    min-height: 65px;
+    max-height: 300px;
+    padding: 0 15px 5px;
+    font-family: 'Amatic SC', cursive;
+    font-size: .7em;
+}
+
+.navbar-brand img {
+    height: auto;
+    width:70px;
+}
+
+.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+    color: black;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #D5D5;
+}
+</style>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <p class="navbar-text">Shut Eye</p> 
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="pics/darkCloud.png">Do Sheep Dream</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="/addnaps">Add Nap</a>
+                    </li>
+                    <li class="active">
+                        <a href="/users">Users</a>
+                    </li>
+                    <li class="active">
+                        <a href="/dreams">All Dreams</a>
+                    </li>
+                    <li class="active">
+                        <a href="/maps">Nap Map</a>
+                    </li>
+                    <li class="active">
+                        <a href="/alarm">Go to sleep</a>
+                    </li>
+                    <li class="active">
+                        <a href="/facts">Pillow Talk</a>
+                    </li>
+                    <li class="active">
+                        <a href="/sleepy">Count Sheep</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
@@ -5,21 +109,27 @@
         <div class="card-body">
           <h5 class="card-title">Dream Entry</h5>
 
-          <p>
+          <div>
             <strong>Title: </strong> {{this.specificNap.dreamTitle}}
-          </p>
-          <p>
+          </div>
+          <div>
             <strong>duration: </strong> {{this.specificNap.duration}}
-          </p>
-          <p>
-            <strong>Description:</strong> {{this.specificNap.description}}
-          </p>
+          </div>
+          <strong>Description:</strong> 
+          <div class="description-item todo-item" data-UserId="{{this.specificNap.UserId}}" data-id="{{this.specificNap.id}}" data-description="{{this.specificNap.description}}">
+            <span>{{this.specificNap.description}}</span><input type='text' class='edit' style='display: none;'>
+            <div></div>
+          </div>
           
           <a href="/user/{{this.user.id}}">← If you dont want to edit, click here toi go back To your page</a>
-
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<canvas id="myCanvas"></canvas>
+
+<script src="/js/diagonal.js"></script>
+
+<script src="/js/index.js"></script>

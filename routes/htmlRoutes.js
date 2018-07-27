@@ -59,11 +59,7 @@ module.exports = function(app) {
   //page for adding users and seeing a list of them and the two most recents naps they took
   app.get("/addnaps", function(req, res) {
     db.User.findAll({include: [db.Dream]}).then(function(result) {
-<<<<<<< HEAD
-    // console.log(result[0].dataValues.Dreams[0])
-=======
     console.log(result)          
->>>>>>> 48a9cb4047c564540d9f4e289c3b11078298b928
       res.render("addANap", {
       });
     });
@@ -95,17 +91,6 @@ module.exports = function(app) {
     });
   });
 
-  // Load a specific entry
-  // app.get("/entry/:id", function(req, res) {
-  //   console.log(req.params)
-  //   db.User.findOne({ where: { id: req.params.id }, include: [db.Dream]  }).then(function(result) {
-  //     // console.log(result.dataValues.Dreams[0].dreamTitle);
-  //     res.render("loggedNap", {
-  //       user: result.dataValues,
-  //       specificNap: result.dataValues.Dreams[0]
-  //     });
-  //   });
-  // });
 
   app.get("/entry/:id", function(req, res) {
     console.log(req.params)

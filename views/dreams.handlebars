@@ -1,16 +1,39 @@
 <style>
+html, body {
+    width: 100%;
+    padding: 0px;
+}
+
+canvas {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 0;
+    display: inline;
+    z-index: -1;
+}
 
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
-    background-color: rgb(80, 163, 202);
+    background-color: 	#67816C;
     color: #FFF;
-    padding: 2% 0;
+    padding: 4% 0;
     font-family: 'Amatic SC', cursive;
-    font-size: 3.2em;
+    font-size: 2.2em;
     border: 0;
-    position: absolute;
-    max-width: 200px;
+    {{!-- position: fixed; --}}
+    {{!-- max-width: 200px; --}}
+    {{!-- overflow: auto; --}}
+    margin-bottom: 30px;
+}
+
+.navbar-text {
+    font-size: 150px;
+     display: block;
+     position: absolute; 
+    left: 50%;
+    transform: translatex(-50%); 
 }
 
 .navbar-brand {
@@ -18,7 +41,8 @@
     min-height: 65px;
     max-height: 300px;
     padding: 0 15px 5px;
-   font-family: 'Amatic SC', cursive;
+    font-family: 'Amatic SC', cursive;
+    font-size: .7em;
 }
 
 .navbar-brand img {
@@ -27,24 +51,28 @@
 }
 
 .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
-    color: #fff;
+    color: black;
 }
 
 .navbar-inverse .navbar-nav li a {
     color: #D5D5;
 }
 
-h1{
+h1 {
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+#nappersList {
+    color: rgb(0, 0, 0);
 }
 
 .blackText {
     color: black;
 }
 
-
 </style>
 
+<canvas id="myCanvas"></canvas>
 <body>
 
     <nav class="navbar navbar-inverse">
@@ -68,6 +96,9 @@ h1{
                     </li>
                     <li class="active">
                         <a href="/users">Users</a>
+                    </li>
+                    <li class="active">
+                        <a href="/dreams">All Dreams</a>
                     </li>
                     <li class="active">
                         <a href="/maps">Map</a>
@@ -115,5 +146,8 @@ h1{
     </div>
   </div>
 </div>
+
+<script src="/js/diagonal.js"></script>
+
 
 </body>

@@ -1,5 +1,10 @@
 <style>
 
+html, body {
+    width: 100%;
+    padding: 0px;
+}
+
 canvas {
     position: absolute;
     top: 0px;
@@ -98,6 +103,9 @@ h1 {
                         <a href="/users">Users</a>
                     </li>
                     <li class="active">
+                        <a href="/dreams">All Dreams</a>
+                    </li>
+                    <li class="active">
                         <a href="/maps">Nap Map</a>
                     </li>
                     <li class="active">
@@ -127,14 +135,6 @@ h1 {
             <label for="napper-text">Napper</label>
             <input type="text" id="napper-text" class="form-control" aria-describedby="example-text" placeholder="UserName">
           </div>
-          {{!-- <div class="form-group">
-            <label for="napper-text">Title</label>
-            <input type="text" id="title-text" class="form-control" aria-describedby="example-text" placeholder="Title your dream (optional)">
-          </div>
-          <div class="form-group">
-            <label for="napper-text">Description</label>
-            <input type="text" id="dream-description" class="form-control" aria-describedby="example-text" placeholder="Describe your dream (optional)">
-          </div> --}}
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
         <h3><a class="blackText"href="/users">View All Nappers</a></h3>
@@ -153,7 +153,7 @@ h1 {
   </div>
 </div>
 
-<script type="text/javascript"></script>
+<canvas id="myCanvas"></canvas>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

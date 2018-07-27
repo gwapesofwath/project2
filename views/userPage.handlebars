@@ -1,4 +1,9 @@
 <style>
+
+html, body {
+    width: 100%;
+    padding: 0px;
+}
 canvas {
     position: absolute;
     top: 0px;
@@ -8,9 +13,9 @@ canvas {
     z-index: -1;
 }
 
+
 .background {
     position: relative;
-    {{!-- display: inline; --}}
     z-index: 1;
     margin-top: 50px;
 }
@@ -69,6 +74,12 @@ h1 {
 
 .backToUsers {
     position: absolute;
+    top: 5px;
+    font-size: 25px;
+}
+
+.changeSleepStatus {
+    position: absolute;
     top: 10px;
 }
 
@@ -101,6 +112,9 @@ h1 {
                         <a href="/users">Users</a>
                     </li>
                     <li class="active">
+                        <a href="/dreams">All Dreams</a>
+                    </li>
+                    <li class="active">
                         <a href="/maps">Nap Map</a>
                     </li>
                     <li class="active">
@@ -126,6 +140,11 @@ h1 {
         </div>
         <div class="col-2">
            <a class="backToUsers" href="/users">Back to all users</a>
+        </div>
+        {{!-- This is where I will do handlebar's if method, to display the 
+        word sleep/awake in a different colored button/box upon completing the put request --}}
+        <div class="col-2">
+           <button class="changeSleepStatus">Sleep/Awake</button>
         </div>
     </div>  
 
@@ -179,5 +198,5 @@ h1 {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="/js/index.js"></script>
-
+<script src="/js/diagonal.js"></script>
 

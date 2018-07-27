@@ -8,6 +8,19 @@ canvas {
     z-index: -1;
 }
 
+html, body {
+    width: 100%;
+    padding: 0px;
+}
+
+canvas {
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    z-index: 0;
+    display: inline;
+    z-index: -1;
+}
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
@@ -120,6 +133,7 @@ h1 {
         </div>
     </div>
 
+    
 
     <script type="text/javascript">
         var factArr =[
@@ -149,5 +163,10 @@ h1 {
 
         console.log(fact)
     </script>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script src="/js/diagonal.js"></script>
+    
 
     </body>

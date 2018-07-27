@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 // Get references to page elements
 var napperText = $("#napper-text");
 var $dreamTitle = $("#title-text");
@@ -206,13 +208,17 @@ var handleDeleteBtnClick = function() {
 //   dreamDescription.val("");
 // };
 
-$(document).ready(function() {
+var editPageUserID = $(".todo-item").data("id");
+var editPageUserIDuser = $(".todo-item").data("UserId");
+
+
   function editTodo() {
     var currentTodo = $(this).data("description");
     $(this).children().hide();
-    $(this).children("input.edit").val(currentTodo.description);
+    $(this).children("input.edit").val();
     $(this).children("input.edit").show();
     $(this).children("input.edit").focus();
+    console.log(editPageUserID)
   }
 
   // This function starts updating a todo in the database if a user hits the "Enter Key"
@@ -224,21 +230,29 @@ $(document).ready(function() {
       $(this).blur();
       updateTodo(updatedTodo);
     }
+    console.log(updatedTodo)
   }
 
   // This function updates a todo in our database
   function updateTodo(todo) {
     $.ajax({
       method: "PUT",
-      url: "/api/naps",
-      data: todo
-    }).then(window.location.reload());
+      url: "/api/naps/" + editPageUserID,
+      data: {description : todo}
+    }).then(
+      window.location.replace("/entry/"+editPageUserID)
+    );
   }
+
+
+  // Add event listeners to the submit and delete buttons
+  $submitBtn.on("click", handleFormSubmit);
+  submitDream.on("click", handleDreamSubmit);
+  deleteButton.on("click", handleDeleteBtnClick);
+  $(document).on("click", ".description-item", editTodo);
+  $(document).on("keyup", ".todo-item", finishEdit);
+  // editButton.on("click", handleEditBtn);
+
 });
 
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-submitDream.on("click", handleDreamSubmit);
-deleteButton.on("click", handleDeleteBtnClick);
-// editButton.on("click", handleEditBtn);
