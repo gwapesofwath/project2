@@ -18,7 +18,7 @@ canvas {
     position: relative;
     {{!-- display: inline; --}}
     z-index: 1;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 
@@ -31,6 +31,7 @@ canvas {
     font-family: 'Amatic SC', cursive;
     font-size: 2.2em;
     border: 0;
+    margin-bottom: 30px;
     {{!-- position: fixed; --}}
     {{!-- max-width: 200px; --}}
     {{!-- overflow: auto; --}}
@@ -66,15 +67,14 @@ canvas {
     color: #D5D5;
 }
 
-h1 {
-    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
-}
 
 .blackText {
     color: black;
 }
 
-
+.container {
+  padding-bottom: 200px;
+}
 </style>
 
 <body>
@@ -103,7 +103,7 @@ h1 {
                         <a href="/users">Users</a>
                     </li>
                     <li class="active">
-                        <a href="/maps">Nap Map</a>
+                        <a href="/dreams">All Dreams</a>
                     </li>
                     <li class="active">
                         <a href="/alarm">Go to sleep</a>
@@ -125,7 +125,7 @@ h1 {
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h1 class="card-title">View Nappers</h1>
+          <h1 class="card-title"> Nappers</h1>
 
             <ul class="nappersList">
                 {{#each users}}
